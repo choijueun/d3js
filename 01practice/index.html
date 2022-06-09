@@ -41,6 +41,7 @@
             })
 
             const data2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            const fill2 = ['#F7785D', '#FFAD6C', '#F7D34B', '#C6DE77', '#8DAD7F', '#96E1D5', '#97CBEF', '#9692D6', '#B866E4', '#F38FC1'];
             const svg2 = d3.select('#test2 svg')
             svg2.selectAll('bar')
                 // data2 파일 입력하여 rect 태그 추가
@@ -52,7 +53,7 @@
                 .attr('x', (data, idx)=>{ return idx * 50 })
                 .attr('y', (data, idx)=>{ return 150 - data * 10 })
                 // background-color 추가
-                .attr('fill', 'blue');
+                .attr('fill', (d, i)=>{ return fill2[i] });
 
         })
 
