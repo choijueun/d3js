@@ -22,7 +22,8 @@
             const svg_data = [3, 6, 9, 12, 15, 18, 21, 24, 27, 30];
             const svg = d3.select('svg');
     
-            svg_data.forEach((data, idx)=>{
+            // svg_data.forEach((data, idx)=>{
+            $.each(svg_data, (idx, data)=>{
                 // svg 하위에 rect 태그 추가
                 svg.append('rect')  
                     // rect 태그에 속성 추가
