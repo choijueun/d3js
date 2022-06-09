@@ -11,14 +11,14 @@
     <title>d3.js PRACTICE</title>
 </head>
 <body>
-    <div id="test1">
+    <div id="test1" style="float: left; margin:20px;">
         <h2>TEST1</h2>
         <p>jQuery의 each 함수 이용하여 그린 막대 그래프</p>
         <p>data: 3, 6, 9, 12, 15, 18, 21, 24, 27, 30</p>
         <svg width="500" height="150"></svg>
     </div>
     
-    <div id="test2">
+    <div id="test2" style="float: left; margin:20px;">
         <h2>TEST2</h2>
         <p>d3.js의 selectAll 함수 이용하여 그린 막대 그래프</p>
         <p>data: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10</p>
@@ -34,10 +34,10 @@
                 // svg 하위에 rect 태그 추가
                 svg1.append('rect')  
                     // rect 태그에 속성 추가
-                    .attr('height', data)
+                    .attr('height', data * 4)
                     .attr('width', 40)
                     .attr('x', 50*idx)
-                    .attr('y', 100 - data);
+                    .attr('y', 150 - data * 4);
             })
 
             const data2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
