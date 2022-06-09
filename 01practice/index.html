@@ -11,11 +11,27 @@
     <title>d3.js PRACTICE</title>
 </head>
 <body>
-    <svg width="500" height="500"></svg>
+    <div>
+        <h2>TEST1</h2>
+        <p>3, 6, 9, 12, 15, 18, 21, 24, 27, 30 막대 그래프</p>
+        <svg width="500" height="500"></svg>
+    </div>
 
     <script>
-        const svg_data = [3, 6, 9, 12, 15, 18, 21, 24, 27, 30];
-        const svg = d3.select('svg');
+        $(()=>{
+            const svg_data = [3, 6, 9, 12, 15, 18, 21, 24, 27, 30];
+            const svg = d3.select('svg');
+    
+            svg_data.forEach((data, idx)=>{
+                // svg 하위에 rect 태그 추가
+                svg.append('rect')  
+                    // rect 태그에 속성 추가
+                    .attr('height', data)
+                    .attr('width', 40)
+                    .attr('x', 50*idx)
+                    .attr('y', 100 - data);
+            })
+        })
 
     </script>
 </body>
