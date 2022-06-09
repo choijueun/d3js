@@ -43,12 +43,16 @@
             const data2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
             const svg2 = d3.select('#test2 svg')
             svg2.selectAll('bar')
+                // data2 파일 입력하여 rect 태그 추가
                 .data(data2)
                 .enter().append('rect')
+                // 속성 추가
                 .attr('height', (data, idx)=>{ return data * 10 })
                 .attr('width', 40)
                 .attr('x', (data, idx)=>{ return idx * 50 })
-                .attr('y', (data, idx)=>{ return 150 - data * 10 });
+                .attr('y', (data, idx)=>{ return 150 - data * 10 })
+                // background-color 추가
+                .attr('fill', 'blue');
 
         })
 
