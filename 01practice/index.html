@@ -28,7 +28,7 @@
     <div id="test3" style="float: left; margin:20px;">
         <h2>TEST3</h2>
         <p>PIE CHART</p>
-        <svg width="500" height="300"></svg>
+        <div id="test3-pie"></div>
     </div>
 
     <script>
@@ -61,6 +61,26 @@
                 // background-color 추가
                 .attr('fill', (d, i)=>{ return fill2[i] });
 
+            const pie_conf = {
+                'width': 300,
+                'height': 300,
+                'outerRadius': 150,
+                'innerRadius': 100,
+                'color': 'blue'
+            }
+            const data3 = [
+                {name: '신혜정', value: 100},
+                {name: '최보라', value: 60},
+                {name: '최주은', value: 30}
+            ];
+            // #test3-pie div 하위에 svg 태그 추가
+            let svg3 = d3.select('#test3-pie').append('svg:svg')
+                            .attr('width', pie_conf['width'])
+                            .attr('height', pie_conf['height'])
+            // 하위에 g 태그 추가
+            svg3.append('svg:g')
+                .attr('transform', 'translate(' + pie_conf['innerRadius'] + ',' + pie_conf['outerRadius'] + ')')
+                .data([data3]);
         })
 
     </script>
