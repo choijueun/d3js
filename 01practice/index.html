@@ -20,19 +20,20 @@
 
     <script>
         $(()=>{
-            const svg_data = [3, 6, 9, 12, 15, 18, 21, 24, 27, 30];
-            const svg = d3.select('#test1 svg');
+            const data1 = [3, 6, 9, 12, 15, 18, 21, 24, 27, 30];
+            const svg1 = d3.select('#test1 svg');
     
             // svg_data.forEach((data, idx)=>{
-            $.each(svg_data, (idx, data)=>{
+            $.each(data1, (idx, data)=>{
                 // svg 하위에 rect 태그 추가
-                svg.append('rect')  
+                svg1.append('rect')  
                     // rect 태그에 속성 추가
                     .attr('height', data)
                     .attr('width', 40)
                     .attr('x', 50*idx)
                     .attr('y', 100 - data);
             })
+
         })
 
     </script>
