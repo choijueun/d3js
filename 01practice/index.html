@@ -69,18 +69,50 @@
                 'color': 'blue'
             }
             const data3 = [
-                {name: '신혜정', value: 100},
-                {name: '최보라', value: 60},
-                {name: '최주은', value: 30}
+                {'name': '신혜정', 'value': 100},
+                {'name': '최보라', 'value': 60},
+                {'name': '최주은', 'value': 30}
             ];
-            // #test3-pie div 하위에 svg 태그 추가
-            let svg3 = d3.select('#test3-pie').append('svg:svg')
-                            .attr('width', pie_conf['width'])
-                            .attr('height', pie_conf['height'])
-            // 하위에 g 태그 추가
-            svg3.append('svg:g')
-                .attr('transform', 'translate(' + pie_conf['innerRadius'] + ',' + pie_conf['outerRadius'] + ')')
-                .data([data3]);
+            let svg3 = d3.select('#test3-pie')
+                            // 하위에 svg 태그 추가
+                            .append('svg:svg')
+                            .attr('width', pie_conf.width)
+                            .attr('height', pie_conf.height)
+                            // 하위에 g 태그 추가
+                            .append('svg:g')
+                            .attr('transform', 'translate(' + pie_conf.innerRadius + ',' + pie_conf.outerRadius + ')')
+                            // data binding
+                            //.data(data3); 
+            // pie chart 속성
+            var arc = d3.arc().innerRadius(pie_conf.innerRadius).outerRadius(pie_conf.outerRadius);
+            // pie chart data
+            var pie = d3.pie()
+            //
+            var arcs = svg3.selectAll("arc")
+                            .data(pie(data3))
+                            .enter().append('svg:g')
+                            .attr('class', 'slice');
+            
+            arcs.append('svg:path')
+                .attr('d', arc)
+                .attr('fill', function(d, i){ return fill2[i]; });
+            
+            arcs.append('svg:text')
+                .attr('dy', '.35em')
+                .attr('text-anchor', 'middle')
+                .attr('transform', function(d){ return 'translate('+arc.centroid(d)+')rotate('+angle(d)+')'; })
+                .text(function(d){ return d.data.name; });
+            
+            function angle(d){
+                var a = (d.startAngle + d.endAngle) * 90 / Math.PI - 90;
+                return a > 90 ? a - 180 : a;
+            }
+
+            svg3.append("svg:text")
+                .attr('dy', '.35em')
+                .attr('text-anchor', 'middle')
+                .text('신입사원')
+                .attr('class', 'title');
         })
 
     </script>
